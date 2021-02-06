@@ -7,6 +7,8 @@
 
 
 #include <xc.h>
+#include <stdint.h>
+#include "ADC.h"
 //******************************************************************************
 //Configuration Bits
 //******************************************************************************
@@ -29,8 +31,8 @@
 //******************************************************************************
 //Variables
 //******************************************************************************
-
-
+uint8_t ADC_value;
+uint8_t ADC_finish;
 //******************************************************************************
 //Prototipos de Funciones
 //******************************************************************************
@@ -42,9 +44,14 @@ void setup(void);
 
 void main(void) {
     setup();
-
+    ADC_setup(3, 2, 0, 0);
+    ADCON0bits.GO = 1;
     while (1) {
-
+        if (ADC_finish == 1) {
+            ADC_finish = 0;
+            ADCON0bits.GO = 1;
+        }
+        PORTD=ADC_value;
     }
 }
 
@@ -56,6 +63,7 @@ void main(void) {
 void setup(void) {
     ANSEL = 0;
     ANSELH = 0;
+    ANSELbits.ANS2 = 1;
     TRISD = 0;
     TRISC = 0;
     TRISBbits.TRISB0 = 1;
@@ -65,7 +73,7 @@ void setup(void) {
     TRISAbits.TRISA2 = 1;
     TRISAbits.TRISA3 = 0;
     PORTD = 0;
-    PORTC = 0b11111000;
+    PORTC = 0;
     PORTAbits.RA0 = 0;
     PORTAbits.RA1 = 0;
     PORTAbits.RA3 = 0;
@@ -75,17 +83,36 @@ void setup(void) {
     INTCONbits.RBIF = 0;
     IOCBbits.IOCB0 = 1;
     IOCBbits.IOCB1 = 1;
+    OPTION_REGbits.T0CS = 0;
+    OPTION_REGbits.PSA = 0;
+    OPTION_REGbits.PSA = 0; // bit 3  Prescaler Assignment bit...0 = Prescaler is assigned to the Timer0
+    OPTION_REGbits.PS2 = 0; // bits 2-0  PS2:PS0: Prescaler Rate Select bits
+    OPTION_REGbits.PS1 = 1;
+    OPTION_REGbits.PS0 = 0;
+    INTCONbits.T0IE = 1;
+    INTCONbits.T0IF = 0;
+    ADC_finish = 0;
 }
 
 void __interrupt() oli(void) {
     if (INTCONbits.RBIF == 1) {
-        if (PORTBbits.RB0==1){
+        if (PORTBbits.RB0 == 1) {
             PORTC++;
-        }
-        else if (PORTBbits.RB1==1){
+        } else if (PORTBbits.RB1 == 1) {
             PORTC--;
         }
         INTCONbits.RBIF = 0;
+    }
+    if (INTCONbits.T0IF == 1) {
+        ADC_finish = 1;
+        INTCONbits.T0IF = 0;
+        TMR0 = 236;
+    }
+    if (PIR1bits.ADIF == 1) {
+        PIR1bits.ADIF = 0;
+        ADC_value = ADRESH;
+        INTCONbits.T0IF = 0;
+        TMR0 = 236;
     }
 
 }

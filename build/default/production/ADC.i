@@ -1,4 +1,4 @@
-# 1 "Interrupciones.c"
+# 1 "ADC.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,15 +6,9 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Interrupciones.c" 2
-
-
-
-
-
-
-
-
+# 1 "ADC.c" 2
+# 1 "./ADC.h" 1
+# 15 "./ADC.h"
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2495,7 +2489,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 9 "Interrupciones.c" 2
+# 15 "./ADC.h" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
@@ -2630,120 +2624,112 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 10 "Interrupciones.c" 2
-
-# 1 "./ADC.h" 1
-# 16 "./ADC.h"
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 16 "./ADC.h" 2
 
 void ADC_setup(uint8_t ConClock, uint8_t Channel, uint8_t Format, uint8_t Vref);
-# 11 "Interrupciones.c" 2
+# 1 "ADC.c" 2
 
 
-
-
-
-#pragma config FOSC = XT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = ON
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-
-
-
-
-uint8_t ADC_value;
-uint8_t ADC_finish;
-
-
-
-void setup(void);
-
-
-
-
-
-void main(void) {
-    setup();
-    ADC_setup(3, 2, 0, 0);
-    ADCON0bits.GO = 1;
-    while (1) {
-        if (ADC_finish == 1) {
-            ADC_finish = 0;
-            ADCON0bits.GO = 1;
-        }
-        PORTD=ADC_value;
+void ADC_setup(uint8_t ConClock, uint8_t Channel, uint8_t Format, uint8_t Vref) {
+    switch (ConClock) {
+        case 1:
+            ADCON0bits.ADCS = 0b00;
+            break;
+        case 2:
+            ADCON0bits.ADCS = 0b01;
+            break;
+        case 3:
+            ADCON0bits.ADCS = 0b10;
+            break;
+        case 4:
+            ADCON0bits.ADCS = 0b11;
+            break;
+        default:
+            ADCON0bits.ADCS = 0b10;
+            break;
     }
-}
-
-
-
-
-
-
-void setup(void) {
-    ANSEL = 0;
-    ANSELH = 0;
-    ANSELbits.ANS2 = 1;
-    TRISD = 0;
-    TRISC = 0;
-    TRISBbits.TRISB0 = 1;
-    TRISBbits.TRISB1 = 1;
-    TRISAbits.TRISA0 = 0;
-    TRISAbits.TRISA1 = 0;
-    TRISAbits.TRISA2 = 1;
-    TRISAbits.TRISA3 = 0;
-    PORTD = 0;
-    PORTC = 0;
-    PORTAbits.RA0 = 0;
-    PORTAbits.RA1 = 0;
-    PORTAbits.RA3 = 0;
-    INTCONbits.GIE = 1;
-    INTCONbits.PEIE = 1;
-    INTCONbits.RBIE = 1;
-    INTCONbits.RBIF = 0;
-    IOCBbits.IOCB0 = 1;
-    IOCBbits.IOCB1 = 1;
-    OPTION_REGbits.T0CS = 0;
-    OPTION_REGbits.PSA = 0;
-    OPTION_REGbits.PSA = 0;
-    OPTION_REGbits.PS2 = 0;
-    OPTION_REGbits.PS1 = 1;
-    OPTION_REGbits.PS0 = 0;
-    INTCONbits.T0IE = 1;
-    INTCONbits.T0IF = 0;
-    ADC_finish = 0;
-}
-
-void __attribute__((picinterrupt(("")))) oli(void) {
-    if (INTCONbits.RBIF == 1) {
-        if (PORTBbits.RB0 == 1) {
-            PORTC++;
-        } else if (PORTBbits.RB1 == 1) {
-            PORTC--;
-        }
-        INTCONbits.RBIF = 0;
+    switch (Channel) {
+        case 0:
+            ADCON0bits.CHS = 0b0000;
+            break;
+        case 1:
+            ADCON0bits.CHS = 0b0001;
+            break;
+        case 2:
+            ADCON0bits.CHS = 0b0010;
+            break;
+        case 3:
+            ADCON0bits.CHS = 0b0011;
+            break;
+        case 4:
+            ADCON0bits.CHS = 0b0100;
+            break;
+        case 5:
+            ADCON0bits.CHS = 0b0101;
+            break;
+        case 6:
+            ADCON0bits.CHS = 0b0110;
+            break;
+        case 7:
+            ADCON0bits.CHS = 0b0111;
+            break;
+        case 8:
+            ADCON0bits.CHS = 0b1000;
+            break;
+        case 9:
+            ADCON0bits.CHS = 0b1001;
+            break;
+        case 10:
+            ADCON0bits.CHS = 0b1010;
+            break;
+        case 11:
+            ADCON0bits.CHS = 0b1011;
+            break;
+        case 12:
+            ADCON0bits.CHS = 0b1100;
+            break;
+        case 13:
+            ADCON0bits.CHS = 0b1101;
+            break;
+        case 14:
+            ADCON0bits.CHS = 0b1110;
+            break;
+        case 15:
+            ADCON0bits.CHS = 0b1111;
+            break;
+        default:
+            ADCON0bits.CHS = 0b0000;
+            break;
     }
-    if (INTCONbits.T0IF == 1) {
-        ADC_finish = 1;
-        INTCONbits.T0IF = 0;
-        TMR0 = 236;
+    if (Format == 1) {
+        ADCON1bits.ADFM = 1;
+    } else {
+        ADCON1bits.ADFM = 0;
     }
-    if (PIR1bits.ADIF == 1) {
-        PIR1bits.ADIF = 0;
-        ADC_value = ADRESH;
-        INTCONbits.T0IF = 0;
-        TMR0 = 236;
+    switch (Vref) {
+        case 1:
+            ADCON1bits.VCFG0 = 0;
+            ADCON1bits.VCFG1 = 0;
+            break;
+        case 2:
+            ADCON1bits.VCFG0 = 1;
+            ADCON1bits.VCFG1 = 1;
+            break;
+        case 3:
+            ADCON1bits.VCFG0 = 0;
+            ADCON1bits.VCFG1 = 1;
+            break;
+        case 4:
+            ADCON1bits.VCFG0 = 1;
+            ADCON1bits.VCFG1 = 0;
+            break;
+        default:
+            ADCON1bits.VCFG0 = 0;
+            ADCON1bits.VCFG1 = 0;
+            break;
     }
-
+    ADCON0bits.ADON=1;
+    INTCONbits.GIE=1;
+    INTCONbits.PEIE=1;
+    PIE1bits.ADIE=1;
 }
