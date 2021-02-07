@@ -9,6 +9,7 @@
 #include <xc.h>
 #include <stdint.h>
 #include "ADC.h"
+#include "display.h"
 //******************************************************************************
 //Configuration Bits
 //******************************************************************************
@@ -51,7 +52,8 @@ void main(void) {
             ADC_finish = 0;
             ADCON0bits.GO = 1;
         }
-        PORTD=ADC_value;
+        PORTD=tabla((ADC_value & 0b00001111));
+        PORTC=ADC_value;
     }
 }
 
@@ -74,7 +76,7 @@ void setup(void) {
     TRISAbits.TRISA3 = 0;
     PORTD = 0;
     PORTC = 0;
-    PORTAbits.RA0 = 0;
+    PORTAbits.RA0 = 1;
     PORTAbits.RA1 = 0;
     PORTAbits.RA3 = 0;
     INTCONbits.GIE = 1;
