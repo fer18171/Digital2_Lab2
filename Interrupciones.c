@@ -34,6 +34,7 @@
 //******************************************************************************
 uint8_t ADC_value;
 uint8_t ADC_finish;
+uint8_t Multiplex;
 //******************************************************************************
 //Prototipos de Funciones
 //******************************************************************************
@@ -52,8 +53,15 @@ void main(void) {
             ADC_finish = 0;
             ADCON0bits.GO = 1;
         }
-        PORTD=tabla((ADC_value & 0b00001111));
-        PORTC=ADC_value;
+        if (Multiplex == 1) {
+            PORTAbits.RA1 = 0;
+            PORTD = tabla((ADC_value & 0b00001111));
+            PORTAbits.RA0 = 1;
+        } else if (Multiplex == 0) {
+            PORTAbits.RA0 = 0;
+            PORTD = tabla(((ADC_value>>4) & 0b00001111));
+            PORTAbits.RA1 = 1;
+        }
     }
 }
 
@@ -94,6 +102,8 @@ void setup(void) {
     INTCONbits.T0IE = 1;
     INTCONbits.T0IF = 0;
     ADC_finish = 0;
+    Multiplex = 0;
+    TMR0 = 245;
 }
 
 void __interrupt() oli(void) {
@@ -108,13 +118,19 @@ void __interrupt() oli(void) {
     if (INTCONbits.T0IF == 1) {
         ADC_finish = 1;
         INTCONbits.T0IF = 0;
-        TMR0 = 236;
+        TMR0 = 245;
+        if (Multiplex == 1) {
+            Multiplex = 0;
+        } else if (Multiplex == 0) {
+            Multiplex = 1;
+        }
+
     }
     if (PIR1bits.ADIF == 1) {
         PIR1bits.ADIF = 0;
         ADC_value = ADRESH;
         INTCONbits.T0IF = 0;
-        TMR0 = 236;
+        TMR0 = 245;
     }
 
 }

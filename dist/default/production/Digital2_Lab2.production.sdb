@@ -15,15 +15,15 @@
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
 "3 C:\Users\santi\Documents\Santiago\UVG\Semestre7\ElectronicaDigital2\Labs\Laboratorio2\Digital2_Lab2\display.c
 [v _tabla tabla `(uc  1 e 1 0 ]
-"46 C:\Users\santi\Documents\Santiago\UVG\Semestre7\ElectronicaDigital2\Labs\Laboratorio2\Digital2_Lab2\Interrupciones.c
+"47 C:\Users\santi\Documents\Santiago\UVG\Semestre7\ElectronicaDigital2\Labs\Laboratorio2\Digital2_Lab2\Interrupciones.c
 [v _main main `(v  1 e 1 0 ]
-"65
+"73
 [v _setup setup `(v  1 e 1 0 ]
-"99
+"109
 [v _oli oli `II(v  1 e 1 0 ]
 "59 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
-[s S154 . 1 `uc 1 RA0 1 0 :1:0 
+[s S80 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -33,9 +33,9 @@
 `uc 1 RA7 1 0 :1:7 
 ]
 "183
-[u S163 . 1 `S154 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES163  1 e 1 @5 ]
-[s S259 . 1 `uc 1 RB0 1 0 :1:0 
+[u S89 . 1 `S80 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES89  1 e 1 @5 ]
+[s S260 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -45,8 +45,8 @@
 `uc 1 RB7 1 0 :1:7 
 ]
 "245
-[u S268 . 1 `S259 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES268  1 e 1 @6 ]
+[u S269 . 1 `S260 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES269  1 e 1 @6 ]
 "290
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
 "352
@@ -118,7 +118,7 @@
 ]
 [u S244 . 1 `S233 1 . 1 0 `S240 1 . 1 0 ]
 [v _OPTION_REGbits OPTION_REGbits `VES244  1 e 1 @129 ]
-[s S133 . 1 `uc 1 TRISA0 1 0 :1:0 
+[s S153 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -128,9 +128,9 @@
 `uc 1 TRISA7 1 0 :1:7 
 ]
 "1433
-[u S142 . 1 `S133 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES142  1 e 1 @133 ]
-[s S112 . 1 `uc 1 TRISB0 1 0 :1:0 
+[u S162 . 1 `S153 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES162  1 e 1 @133 ]
+[s S132 . 1 `uc 1 TRISB0 1 0 :1:0 
 `uc 1 TRISB1 1 0 :1:1 
 `uc 1 TRISB2 1 0 :1:2 
 `uc 1 TRISB3 1 0 :1:3 
@@ -140,13 +140,13 @@
 `uc 1 TRISB7 1 0 :1:7 
 ]
 "1495
-[u S121 . 1 `S112 1 . 1 0 ]
-[v _TRISBbits TRISBbits `VES121  1 e 1 @134 ]
+[u S141 . 1 `S132 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES141  1 e 1 @134 ]
 "1540
 [v _TRISC TRISC `VEuc  1 e 1 @135 ]
 "1602
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
-[s S453 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S454 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -155,8 +155,8 @@
 `uc 1 ADIE 1 0 :1:6 
 ]
 "1718
-[u S461 . 1 `S453 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES461  1 e 1 @140 ]
+[u S462 . 1 `S454 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES462  1 e 1 @140 ]
 [s S207 . 1 `uc 1 IOCB 1 0 :8:0 
 ]
 "2436
@@ -171,18 +171,18 @@
 ]
 [u S218 . 1 `S207 1 . 1 0 `S209 1 . 1 0 ]
 [v _IOCBbits IOCBbits `VES218  1 e 1 @150 ]
-[s S420 . 1 `uc 1 . 1 0 :4:0 
+[s S421 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 VCFG0 1 0 :1:4 
 `uc 1 VCFG1 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 ADFM 1 0 :1:7 
 ]
 "2991
-[u S426 . 1 `S420 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES426  1 e 1 @159 ]
+[u S427 . 1 `S421 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES427  1 e 1 @159 ]
 "3387
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
-[s S89 . 1 `uc 1 ANS0 1 0 :1:0 
+[s S109 . 1 `uc 1 ANS0 1 0 :1:0 
 `uc 1 ANS1 1 0 :1:1 
 `uc 1 ANS2 1 0 :1:2 
 `uc 1 ANS3 1 0 :1:3 
@@ -192,18 +192,20 @@
 `uc 1 ANS7 1 0 :1:7 
 ]
 "3404
-[u S98 . 1 `S89 1 . 1 0 ]
-[v _ANSELbits ANSELbits `VES98  1 e 1 @392 ]
+[u S118 . 1 `S109 1 . 1 0 ]
+[v _ANSELbits ANSELbits `VES118  1 e 1 @392 ]
 "3449
 [v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
 "35 C:\Users\santi\Documents\Santiago\UVG\Semestre7\ElectronicaDigital2\Labs\Laboratorio2\Digital2_Lab2\Interrupciones.c
 [v _ADC_value ADC_value `uc  1 e 1 0 ]
 "36
 [v _ADC_finish ADC_finish `uc  1 e 1 0 ]
-"46
+"37
+[v _Multiplex Multiplex `uc  1 e 1 0 ]
+"47
 [v _main main `(v  1 e 1 0 ]
 {
-"58
+"66
 } 0
 "3 C:\Users\santi\Documents\Santiago\UVG\Semestre7\ElectronicaDigital2\Labs\Laboratorio2\Digital2_Lab2\display.c
 [v _tabla tabla `(uc  1 e 1 0 ]
@@ -216,10 +218,10 @@
 [v tabla@valor valor `uc  1 a 1 5 ]
 "56
 } 0
-"65 C:\Users\santi\Documents\Santiago\UVG\Semestre7\ElectronicaDigital2\Labs\Laboratorio2\Digital2_Lab2\Interrupciones.c
+"73 C:\Users\santi\Documents\Santiago\UVG\Semestre7\ElectronicaDigital2\Labs\Laboratorio2\Digital2_Lab2\Interrupciones.c
 [v _setup setup `(v  1 e 1 0 ]
 {
-"97
+"107
 } 0
 "3 C:\Users\santi\Documents\Santiago\UVG\Semestre7\ElectronicaDigital2\Labs\Laboratorio2\Digital2_Lab2\ADC.c
 [v _ADC_setup ADC_setup `(v  1 e 1 0 ]
@@ -229,11 +231,11 @@
 [v ADC_setup@Channel Channel `uc  1 p 1 3 ]
 [v ADC_setup@Format Format `uc  1 p 1 4 ]
 [v ADC_setup@Vref Vref `uc  1 p 1 5 ]
-[v ADC_setup@ConClock ConClock `uc  1 a 1 8 ]
+[v ADC_setup@ConClock ConClock `uc  1 a 1 0 ]
 "105
 } 0
-"99 C:\Users\santi\Documents\Santiago\UVG\Semestre7\ElectronicaDigital2\Labs\Laboratorio2\Digital2_Lab2\Interrupciones.c
+"109 C:\Users\santi\Documents\Santiago\UVG\Semestre7\ElectronicaDigital2\Labs\Laboratorio2\Digital2_Lab2\Interrupciones.c
 [v _oli oli `II(v  1 e 1 0 ]
 {
-"120
+"136
 } 0
