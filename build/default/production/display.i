@@ -2631,6 +2631,10 @@ uint8_t tabla(uint8_t valor);
 # 1 "display.c" 2
 
 
+
+
+
+
 uint8_t tabla(uint8_t valor) {
     uint8_t hex;
     switch (valor) {

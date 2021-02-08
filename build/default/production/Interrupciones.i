@@ -2632,13 +2632,14 @@ typedef int16_t intptr_t;
 typedef uint16_t uintptr_t;
 # 10 "Interrupciones.c" 2
 
+
 # 1 "./ADC.h" 1
 # 16 "./ADC.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 16 "./ADC.h" 2
 
 void ADC_setup(uint8_t ConClock, uint8_t Channel, uint8_t Format, uint8_t Vref);
-# 11 "Interrupciones.c" 2
+# 12 "Interrupciones.c" 2
 
 # 1 "./display.h" 1
 # 15 "./display.h"
@@ -2647,7 +2648,7 @@ void ADC_setup(uint8_t ConClock, uint8_t Channel, uint8_t Format, uint8_t Vref);
 
 
 uint8_t tabla(uint8_t valor);
-# 12 "Interrupciones.c" 2
+# 13 "Interrupciones.c" 2
 
 
 
@@ -2698,11 +2699,20 @@ void main(void) {
             PORTAbits.RA0 = 1;
         } else if (Multiplex == 0) {
             PORTAbits.RA0 = 0;
-            PORTD = tabla(((ADC_value>>4) & 0b00001111));
+            PORTD = tabla(((ADC_value >> 4) & 0b00001111));
+
+
+
             PORTAbits.RA1 = 1;
+        }
+        if (ADC_value > PORTC) {
+            PORTAbits.RA3 = 1;
+        } else {
+            PORTAbits.RA3 = 0;
         }
     }
 }
+
 
 
 
@@ -2758,6 +2768,9 @@ void __attribute__((picinterrupt(("")))) oli(void) {
         ADC_finish = 1;
         INTCONbits.T0IF = 0;
         TMR0 = 245;
+
+
+
         if (Multiplex == 1) {
             Multiplex = 0;
         } else if (Multiplex == 0) {

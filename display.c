@@ -1,6 +1,10 @@
 #include "display.h"
 
-uint8_t tabla(uint8_t valor) {
+/*Esta funcion recibe un valor de 8 bits y toma unicamente en cuenta los 4 LSB
+ para desplegar en el display los valores que se requieren utilizando un switch-case
+ y luego devuelve un entero de 8 bits que representa los bits que deben encenderse
+ para desplegar en el display el numero que corresponde*/
+uint8_t tabla(uint8_t valor) { 
     uint8_t hex;
     switch (valor) {
         case 0x0:

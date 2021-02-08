@@ -1,7 +1,7 @@
 #include "ADC.h"
 
 void ADC_setup(uint8_t ConClock, uint8_t Channel, uint8_t Format, uint8_t Vref) {
-    switch (ConClock) {
+    switch (ConClock) { //Switch para elegir el conversion clock del ADC
         case 1:
             ADCON0bits.ADCS = 0b00;
             break;
@@ -18,7 +18,7 @@ void ADC_setup(uint8_t ConClock, uint8_t Channel, uint8_t Format, uint8_t Vref) 
             ADCON0bits.ADCS = 0b10;
             break;
     }
-    switch (Channel) {
+    switch (Channel) { //Eleccion del canal
         case 0:
             ADCON0bits.CHS = 0b0000;
             break;
@@ -71,12 +71,12 @@ void ADC_setup(uint8_t ConClock, uint8_t Channel, uint8_t Format, uint8_t Vref) 
             ADCON0bits.CHS = 0b0000;
             break;
     }
-    if (Format == 1) {
+    if (Format == 1) { //Eleccion del formato asi tipo a la izq o a la der
         ADCON1bits.ADFM = 1;
     } else {
         ADCON1bits.ADFM = 0;
     }
-    switch (Vref) {
+    switch (Vref) { //Eleccion de los voltajes de referencia
         case 1:
             ADCON1bits.VCFG0 = 0;
             ADCON1bits.VCFG1 = 0;
@@ -98,7 +98,7 @@ void ADC_setup(uint8_t ConClock, uint8_t Channel, uint8_t Format, uint8_t Vref) 
             ADCON1bits.VCFG1 = 0;
             break;
     }
-    ADCON0bits.ADON=1;
+    ADCON0bits.ADON=1; //Activacion de los enables de las interrupciones
     INTCONbits.GIE=1;
     INTCONbits.PEIE=1;
     PIE1bits.ADIE=1;

@@ -233,166 +233,166 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"3 display.c
-[; ;display.c: 3: uint8_t tabla(uint8_t valor) {
+"7 display.c
+[; ;display.c: 7: uint8_t tabla(uint8_t valor) {
 [v _tabla `(uc ~T0 @X0 1 ef1`uc ]
 {
 [e :U _tabla ]
 [v _valor `uc ~T0 @X0 1 r1 ]
 [f ]
-"4
-[; ;display.c: 4:     uint8_t hex;
+"8
+[; ;display.c: 8:     uint8_t hex;
 [v _hex `uc ~T0 @X0 1 a ]
-"5
-[; ;display.c: 5:     switch (valor) {
+"9
+[; ;display.c: 9:     switch (valor) {
 [e $U 140  ]
 {
-"6
-[; ;display.c: 6:         case 0x0:
-[e :U 141 ]
-"7
-[; ;display.c: 7:             hex = 0b00111111;
-[e = _hex -> -> 63 `i `uc ]
-"8
-[; ;display.c: 8:             break;
-[e $U 139  ]
-"9
-[; ;display.c: 9:         case 0x1:
-[e :U 142 ]
 "10
-[; ;display.c: 10:             hex = 0b00000110;
-[e = _hex -> -> 6 `i `uc ]
+[; ;display.c: 10:         case 0x0:
+[e :U 141 ]
 "11
-[; ;display.c: 11:             break;
-[e $U 139  ]
+[; ;display.c: 11:             hex = 0b00111111;
+[e = _hex -> -> 63 `i `uc ]
 "12
-[; ;display.c: 12:         case 0x2:
-[e :U 143 ]
+[; ;display.c: 12:             break;
+[e $U 139  ]
 "13
-[; ;display.c: 13:             hex = 0b01011011;
-[e = _hex -> -> 91 `i `uc ]
+[; ;display.c: 13:         case 0x1:
+[e :U 142 ]
 "14
-[; ;display.c: 14:             break;
-[e $U 139  ]
+[; ;display.c: 14:             hex = 0b00000110;
+[e = _hex -> -> 6 `i `uc ]
 "15
-[; ;display.c: 15:         case 0x3:
-[e :U 144 ]
+[; ;display.c: 15:             break;
+[e $U 139  ]
 "16
-[; ;display.c: 16:             hex = 0b01001111;
-[e = _hex -> -> 79 `i `uc ]
+[; ;display.c: 16:         case 0x2:
+[e :U 143 ]
 "17
-[; ;display.c: 17:             break;
-[e $U 139  ]
+[; ;display.c: 17:             hex = 0b01011011;
+[e = _hex -> -> 91 `i `uc ]
 "18
-[; ;display.c: 18:         case 0x4:
-[e :U 145 ]
+[; ;display.c: 18:             break;
+[e $U 139  ]
 "19
-[; ;display.c: 19:             hex = 0b01100110;
-[e = _hex -> -> 102 `i `uc ]
+[; ;display.c: 19:         case 0x3:
+[e :U 144 ]
 "20
-[; ;display.c: 20:             break;
-[e $U 139  ]
+[; ;display.c: 20:             hex = 0b01001111;
+[e = _hex -> -> 79 `i `uc ]
 "21
-[; ;display.c: 21:         case 0x5:
-[e :U 146 ]
+[; ;display.c: 21:             break;
+[e $U 139  ]
 "22
-[; ;display.c: 22:             hex = 0b01101101;
-[e = _hex -> -> 109 `i `uc ]
+[; ;display.c: 22:         case 0x4:
+[e :U 145 ]
 "23
-[; ;display.c: 23:             break;
-[e $U 139  ]
+[; ;display.c: 23:             hex = 0b01100110;
+[e = _hex -> -> 102 `i `uc ]
 "24
-[; ;display.c: 24:         case 0x6:
-[e :U 147 ]
+[; ;display.c: 24:             break;
+[e $U 139  ]
 "25
-[; ;display.c: 25:             hex = 0b01111101;
-[e = _hex -> -> 125 `i `uc ]
+[; ;display.c: 25:         case 0x5:
+[e :U 146 ]
 "26
-[; ;display.c: 26:             break;
-[e $U 139  ]
+[; ;display.c: 26:             hex = 0b01101101;
+[e = _hex -> -> 109 `i `uc ]
 "27
-[; ;display.c: 27:         case 0x7:
-[e :U 148 ]
+[; ;display.c: 27:             break;
+[e $U 139  ]
 "28
-[; ;display.c: 28:             hex = 0b00000111;
-[e = _hex -> -> 7 `i `uc ]
+[; ;display.c: 28:         case 0x6:
+[e :U 147 ]
 "29
-[; ;display.c: 29:             break;
-[e $U 139  ]
+[; ;display.c: 29:             hex = 0b01111101;
+[e = _hex -> -> 125 `i `uc ]
 "30
-[; ;display.c: 30:         case 0x8:
-[e :U 149 ]
+[; ;display.c: 30:             break;
+[e $U 139  ]
 "31
-[; ;display.c: 31:             hex = 0b01111111;
-[e = _hex -> -> 127 `i `uc ]
+[; ;display.c: 31:         case 0x7:
+[e :U 148 ]
 "32
-[; ;display.c: 32:             break;
-[e $U 139  ]
+[; ;display.c: 32:             hex = 0b00000111;
+[e = _hex -> -> 7 `i `uc ]
 "33
-[; ;display.c: 33:         case 0x9:
-[e :U 150 ]
+[; ;display.c: 33:             break;
+[e $U 139  ]
 "34
-[; ;display.c: 34:             hex = 0b01101111;
-[e = _hex -> -> 111 `i `uc ]
+[; ;display.c: 34:         case 0x8:
+[e :U 149 ]
 "35
-[; ;display.c: 35:             break;
-[e $U 139  ]
+[; ;display.c: 35:             hex = 0b01111111;
+[e = _hex -> -> 127 `i `uc ]
 "36
-[; ;display.c: 36:         case 0xA:
-[e :U 151 ]
+[; ;display.c: 36:             break;
+[e $U 139  ]
 "37
-[; ;display.c: 37:             hex = 0b01110111;
-[e = _hex -> -> 119 `i `uc ]
+[; ;display.c: 37:         case 0x9:
+[e :U 150 ]
 "38
-[; ;display.c: 38:             break;
-[e $U 139  ]
+[; ;display.c: 38:             hex = 0b01101111;
+[e = _hex -> -> 111 `i `uc ]
 "39
-[; ;display.c: 39:         case 0xB:
-[e :U 152 ]
+[; ;display.c: 39:             break;
+[e $U 139  ]
 "40
-[; ;display.c: 40:             hex = 0b01111100;
-[e = _hex -> -> 124 `i `uc ]
+[; ;display.c: 40:         case 0xA:
+[e :U 151 ]
 "41
-[; ;display.c: 41:             break;
-[e $U 139  ]
+[; ;display.c: 41:             hex = 0b01110111;
+[e = _hex -> -> 119 `i `uc ]
 "42
-[; ;display.c: 42:         case 0xC:
-[e :U 153 ]
+[; ;display.c: 42:             break;
+[e $U 139  ]
 "43
-[; ;display.c: 43:             hex = 0b00111001;
-[e = _hex -> -> 57 `i `uc ]
+[; ;display.c: 43:         case 0xB:
+[e :U 152 ]
 "44
-[; ;display.c: 44:             break;
-[e $U 139  ]
+[; ;display.c: 44:             hex = 0b01111100;
+[e = _hex -> -> 124 `i `uc ]
 "45
-[; ;display.c: 45:         case 0xD:
-[e :U 154 ]
+[; ;display.c: 45:             break;
+[e $U 139  ]
 "46
-[; ;display.c: 46:             hex = 0b01011110;
-[e = _hex -> -> 94 `i `uc ]
+[; ;display.c: 46:         case 0xC:
+[e :U 153 ]
 "47
-[; ;display.c: 47:             break;
-[e $U 139  ]
+[; ;display.c: 47:             hex = 0b00111001;
+[e = _hex -> -> 57 `i `uc ]
 "48
-[; ;display.c: 48:         case 0xE:
-[e :U 155 ]
+[; ;display.c: 48:             break;
+[e $U 139  ]
 "49
-[; ;display.c: 49:             hex = 0b01111001;
-[e = _hex -> -> 121 `i `uc ]
+[; ;display.c: 49:         case 0xD:
+[e :U 154 ]
 "50
-[; ;display.c: 50:             break;
-[e $U 139  ]
+[; ;display.c: 50:             hex = 0b01011110;
+[e = _hex -> -> 94 `i `uc ]
 "51
-[; ;display.c: 51:         case 0xF:
-[e :U 156 ]
-"52
-[; ;display.c: 52:             hex = 0b01110001;
-[e = _hex -> -> 113 `i `uc ]
-"53
-[; ;display.c: 53:             break;
+[; ;display.c: 51:             break;
 [e $U 139  ]
+"52
+[; ;display.c: 52:         case 0xE:
+[e :U 155 ]
+"53
+[; ;display.c: 53:             hex = 0b01111001;
+[e = _hex -> -> 121 `i `uc ]
 "54
-[; ;display.c: 54:     }
+[; ;display.c: 54:             break;
+[e $U 139  ]
+"55
+[; ;display.c: 55:         case 0xF:
+[e :U 156 ]
+"56
+[; ;display.c: 56:             hex = 0b01110001;
+[e = _hex -> -> 113 `i `uc ]
+"57
+[; ;display.c: 57:             break;
+[e $U 139  ]
+"58
+[; ;display.c: 58:     }
 }
 [e $U 139  ]
 [e :U 140 ]
@@ -414,11 +414,11 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 15 `i 156
  139 ]
 [e :U 139 ]
-"55
-[; ;display.c: 55:     return hex;
+"59
+[; ;display.c: 59:     return hex;
 [e ) _hex ]
 [e $UE 138  ]
-"56
-[; ;display.c: 56: }
+"60
+[; ;display.c: 60: }
 [e :UE 138 ]
 }

@@ -1,7 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"41 Interrupciones.c
-[; ;Interrupciones.c: 41: void setup(void) {
+"42 Interrupciones.c
+[; ;Interrupciones.c: 42: }
 [v _setup `(v ~T0 @X0 0 ef ]
 "17 ./ADC.h
 [; ;./ADC.h: 17: void ADC_setup(uint8_t ConClock, uint8_t Channel, uint8_t Format, uint8_t Vref);
@@ -46,7 +46,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "17 ./display.h
 [; ;./display.h: 17: uint8_t tabla(uint8_t valor);
 [v _tabla `(uc ~T0 @X0 0 ef1`uc ]
-"3387 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+"290 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 290: extern volatile unsigned char PORTC __attribute__((address(0x007)));
+[v _PORTC `Vuc ~T0 @X0 0 e@7 ]
+"3387
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3387: extern volatile unsigned char ANSEL __attribute__((address(0x188)));
 [v _ANSEL `Vuc ~T0 @X0 0 e@392 ]
 "3449
@@ -91,9 +94,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1433
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1433: extern volatile TRISAbits_t TRISAbits __attribute__((address(0x085)));
 [v _TRISAbits `VS52 ~T0 @X0 0 e@133 ]
-"290
-[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 290: extern volatile unsigned char PORTC __attribute__((address(0x007)));
-[v _PORTC `Vuc ~T0 @X0 0 e@7 ]
 "465
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 465:     struct {
 [s S16 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -403,309 +403,331 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"17 Interrupciones.c
-[; ;Interrupciones.c: 17:     ADC_setup(3, 2, 0, 0);
-[p x FOSC  =  XT         ]
-"18
+"18 Interrupciones.c
 [; ;Interrupciones.c: 18:     ADCON0bits.GO = 1;
-[p x WDTE  =  OFF        ]
+[p x FOSC  =  XT         ]
 "19
 [; ;Interrupciones.c: 19:     while (1) {
-[p x PWRTE  =  OFF       ]
+[p x WDTE  =  OFF        ]
 "20
 [; ;Interrupciones.c: 20:         if (ADC_finish == 1) {
-[p x MCLRE  =  ON        ]
+[p x PWRTE  =  OFF       ]
 "21
 [; ;Interrupciones.c: 21:             ADC_finish = 0;
-[p x CP  =  OFF          ]
+[p x MCLRE  =  ON        ]
 "22
 [; ;Interrupciones.c: 22:             ADCON0bits.GO = 1;
-[p x CPD  =  OFF         ]
+[p x CP  =  OFF          ]
 "23
 [; ;Interrupciones.c: 23:         }
-[p x BOREN  =  OFF       ]
+[p x CPD  =  OFF         ]
 "24
 [; ;Interrupciones.c: 24:         if (Multiplex == 1) {
-[p x IESO  =  OFF        ]
+[p x BOREN  =  OFF       ]
 "25
 [; ;Interrupciones.c: 25:             PORTAbits.RA1 = 0;
-[p x FCMEN  =  OFF       ]
+[p x IESO  =  OFF        ]
 "26
 [; ;Interrupciones.c: 26:             PORTD = tabla((ADC_value & 0b00001111));
+[p x FCMEN  =  OFF       ]
+"27
+[; ;Interrupciones.c: 27:             PORTAbits.RA0 = 1;
 [p x LVP  =  OFF         ]
-"29
-[; ;Interrupciones.c: 29:             PORTAbits.RA0 = 0;
-[p x BOR4V  =  BOR40V    ]
 "30
-[; ;Interrupciones.c: 30:             PORTD = tabla(((ADC_value>>4) & 0b00001111));
+[; ;Interrupciones.c: 30:             PORTD = tabla(((ADC_value >> 4) & 0b00001111));
+[p x BOR4V  =  BOR40V    ]
+"31
+[; ;Interrupciones.c: 31: 
 [p x WRT  =  OFF         ]
-"35
-[; ;Interrupciones.c: 35: 
-[v _ADC_value `uc ~T0 @X0 1 e ]
 "36
-[; ;Interrupciones.c: 36: 
-[v _ADC_finish `uc ~T0 @X0 1 e ]
+[; ;Interrupciones.c: 36:         if (ADC_value > PORTC) {
+[v _ADC_value `uc ~T0 @X0 1 e ]
 "37
-[; ;Interrupciones.c: 37: 
+[; ;Interrupciones.c: 37:             PORTAbits.RA3 = 1;
+[v _ADC_finish `uc ~T0 @X0 1 e ]
+"38
+[; ;Interrupciones.c: 38:         } else {
 [v _Multiplex `uc ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"47
-[; ;Interrupciones.c: 47:     TRISBbits.TRISB0 = 1;
+"48
+[; ;Interrupciones.c: 48: 
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"48
-[; ;Interrupciones.c: 48:     TRISBbits.TRISB1 = 1;
-[e ( _setup ..  ]
 "49
-[; ;Interrupciones.c: 49:     TRISAbits.TRISA0 = 0;
-[e ( _ADC_setup (4 , , , -> -> 3 `i `uc -> -> 2 `i `uc -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;Interrupciones.c: 49: 
+[e ( _setup ..  ]
 "50
-[; ;Interrupciones.c: 50:     TRISAbits.TRISA1 = 0;
-[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+[; ;Interrupciones.c: 50: void setup(void) {
+[e ( _ADC_setup (4 , , , -> -> 3 `i `uc -> -> 2 `i `uc -> -> 0 `i `uc -> -> 0 `i `uc ]
 "51
-[; ;Interrupciones.c: 51:     TRISAbits.TRISA2 = 1;
+[; ;Interrupciones.c: 51:     ANSEL = 0;
+[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+"52
+[; ;Interrupciones.c: 52:     ANSELH = 0;
 [e :U 140 ]
 {
-"52
-[; ;Interrupciones.c: 52:     TRISAbits.TRISA3 = 0;
+"53
+[; ;Interrupciones.c: 53:     ANSELbits.ANS2 = 1;
 [e $ ! == -> _ADC_finish `i -> 1 `i 142  ]
 {
-"53
-[; ;Interrupciones.c: 53:     PORTD = 0;
-[e = _ADC_finish -> -> 0 `i `uc ]
 "54
-[; ;Interrupciones.c: 54:     PORTC = 0;
-[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+[; ;Interrupciones.c: 54:     TRISD = 0;
+[e = _ADC_finish -> -> 0 `i `uc ]
 "55
-[; ;Interrupciones.c: 55:     PORTAbits.RA0 = 1;
+[; ;Interrupciones.c: 55:     TRISC = 0;
+[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+"56
+[; ;Interrupciones.c: 56:     TRISBbits.TRISB0 = 1;
 }
 [e :U 142 ]
-"56
-[; ;Interrupciones.c: 56:     PORTAbits.RA1 = 0;
+"57
+[; ;Interrupciones.c: 57:     TRISBbits.TRISB1 = 1;
 [e $ ! == -> _Multiplex `i -> 1 `i 143  ]
 {
-"57
-[; ;Interrupciones.c: 57:     PORTAbits.RA3 = 0;
-[e = . . _PORTAbits 0 1 -> -> 0 `i `uc ]
 "58
-[; ;Interrupciones.c: 58:     INTCONbits.GIE = 1;
-[e = _PORTD ( _tabla (1 -> & -> _ADC_value `i -> 15 `i `uc ]
+[; ;Interrupciones.c: 58:     TRISAbits.TRISA0 = 0;
+[e = . . _PORTAbits 0 1 -> -> 0 `i `uc ]
 "59
-[; ;Interrupciones.c: 59:     INTCONbits.PEIE = 1;
-[e = . . _PORTAbits 0 0 -> -> 1 `i `uc ]
+[; ;Interrupciones.c: 59:     TRISAbits.TRISA1 = 0;
+[e = _PORTD ( _tabla (1 -> & -> _ADC_value `i -> 15 `i `uc ]
 "60
-[; ;Interrupciones.c: 60:     INTCONbits.RBIE = 1;
+[; ;Interrupciones.c: 60:     TRISAbits.TRISA2 = 1;
+[e = . . _PORTAbits 0 0 -> -> 1 `i `uc ]
+"61
+[; ;Interrupciones.c: 61:     TRISAbits.TRISA3 = 0;
 }
 [e $U 144  ]
 [e :U 143 ]
 [e $ ! == -> _Multiplex `i -> 0 `i 145  ]
 {
-"61
-[; ;Interrupciones.c: 61:     INTCONbits.RBIF = 0;
-[e = . . _PORTAbits 0 0 -> -> 0 `i `uc ]
 "62
-[; ;Interrupciones.c: 62:     IOCBbits.IOCB0 = 1;
-[e = _PORTD ( _tabla (1 -> & >> -> _ADC_value `i -> 4 `i -> 15 `i `uc ]
+[; ;Interrupciones.c: 62:     PORTD = 0;
+[e = . . _PORTAbits 0 0 -> -> 0 `i `uc ]
 "63
-[; ;Interrupciones.c: 63:     IOCBbits.IOCB1 = 1;
+[; ;Interrupciones.c: 63:     PORTC = 0;
+[e = _PORTD ( _tabla (1 -> & >> -> _ADC_value `i -> 4 `i -> 15 `i `uc ]
+"67
+[; ;Interrupciones.c: 67:     INTCONbits.GIE = 1;
 [e = . . _PORTAbits 0 1 -> -> 1 `i `uc ]
-"64
-[; ;Interrupciones.c: 64:     OPTION_REGbits.T0CS = 0;
+"68
+[; ;Interrupciones.c: 68:     INTCONbits.PEIE = 1;
 }
 [e :U 145 ]
 [e :U 144 ]
-"65
-[; ;Interrupciones.c: 65:     OPTION_REGbits.PSA = 0;
+"69
+[; ;Interrupciones.c: 69:     INTCONbits.RBIE = 1;
+[e $ ! > -> _ADC_value `i -> _PORTC `i 146  ]
+{
+"70
+[; ;Interrupciones.c: 70:     INTCONbits.RBIF = 0;
+[e = . . _PORTAbits 0 3 -> -> 1 `i `uc ]
+"71
+[; ;Interrupciones.c: 71:     IOCBbits.IOCB0 = 1;
+}
+[e $U 147  ]
+[e :U 146 ]
+{
+"72
+[; ;Interrupciones.c: 72:     IOCBbits.IOCB1 = 1;
+[e = . . _PORTAbits 0 3 -> -> 0 `i `uc ]
+"73
+[; ;Interrupciones.c: 73:     OPTION_REGbits.T0CS = 0;
+}
+[e :U 147 ]
+"74
+[; ;Interrupciones.c: 74:     OPTION_REGbits.PSA = 0;
 }
 [e :U 139 ]
 [e $U 140  ]
 [e :U 141 ]
-"66
-[; ;Interrupciones.c: 66:     OPTION_REGbits.PSA = 0;
+"75
+[; ;Interrupciones.c: 75:     OPTION_REGbits.PSA = 0;
 [e :UE 138 ]
 }
-"73
-[; ;Interrupciones.c: 73:     Multiplex = 0;
+"83
+[; ;Interrupciones.c: 83:     TMR0 = 245;
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"74
-[; ;Interrupciones.c: 74:     TMR0 = 245;
-[e = _ANSEL -> -> 0 `i `uc ]
-"75
-[; ;Interrupciones.c: 75: }
-[e = _ANSELH -> -> 0 `i `uc ]
-"76
-[; ;Interrupciones.c: 76: 
-[e = . . _ANSELbits 0 2 -> -> 1 `i `uc ]
-"77
-[; ;Interrupciones.c: 77: void __attribute__((picinterrupt(("")))) oli(void) {
-[e = _TRISD -> -> 0 `i `uc ]
-"78
-[; ;Interrupciones.c: 78:     if (INTCONbits.RBIF == 1) {
-[e = _TRISC -> -> 0 `i `uc ]
-"79
-[; ;Interrupciones.c: 79:         if (PORTBbits.RB0 == 1) {
-[e = . . _TRISBbits 0 0 -> -> 1 `i `uc ]
-"80
-[; ;Interrupciones.c: 80:             PORTC++;
-[e = . . _TRISBbits 0 1 -> -> 1 `i `uc ]
-"81
-[; ;Interrupciones.c: 81:         } else if (PORTBbits.RB1 == 1) {
-[e = . . _TRISAbits 0 0 -> -> 0 `i `uc ]
-"82
-[; ;Interrupciones.c: 82:             PORTC--;
-[e = . . _TRISAbits 0 1 -> -> 0 `i `uc ]
-"83
-[; ;Interrupciones.c: 83:         }
-[e = . . _TRISAbits 0 2 -> -> 1 `i `uc ]
 "84
-[; ;Interrupciones.c: 84:         INTCONbits.RBIF = 0;
-[e = . . _TRISAbits 0 3 -> -> 0 `i `uc ]
+[; ;Interrupciones.c: 84: }
+[e = _ANSEL -> -> 0 `i `uc ]
 "85
-[; ;Interrupciones.c: 85:     }
-[e = _PORTD -> -> 0 `i `uc ]
+[; ;Interrupciones.c: 85: 
+[e = _ANSELH -> -> 0 `i `uc ]
 "86
-[; ;Interrupciones.c: 86:     if (INTCONbits.T0IF == 1) {
-[e = _PORTC -> -> 0 `i `uc ]
+[; ;Interrupciones.c: 86: void __attribute__((picinterrupt(("")))) oli(void) {
+[e = . . _ANSELbits 0 2 -> -> 1 `i `uc ]
 "87
-[; ;Interrupciones.c: 87:         ADC_finish = 1;
-[e = . . _PORTAbits 0 0 -> -> 1 `i `uc ]
+[; ;Interrupciones.c: 87:     if (INTCONbits.RBIF == 1) {
+[e = _TRISD -> -> 0 `i `uc ]
 "88
-[; ;Interrupciones.c: 88:         INTCONbits.T0IF = 0;
-[e = . . _PORTAbits 0 1 -> -> 0 `i `uc ]
+[; ;Interrupciones.c: 88:         if (PORTBbits.RB0 == 1) {
+[e = _TRISC -> -> 0 `i `uc ]
 "89
-[; ;Interrupciones.c: 89:         TMR0 = 245;
-[e = . . _PORTAbits 0 3 -> -> 0 `i `uc ]
+[; ;Interrupciones.c: 89:             PORTC++;
+[e = . . _TRISBbits 0 0 -> -> 1 `i `uc ]
 "90
-[; ;Interrupciones.c: 90:         if (Multiplex == 1) {
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+[; ;Interrupciones.c: 90:         } else if (PORTBbits.RB1 == 1) {
+[e = . . _TRISBbits 0 1 -> -> 1 `i `uc ]
 "91
-[; ;Interrupciones.c: 91:             Multiplex = 0;
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+[; ;Interrupciones.c: 91:             PORTC--;
+[e = . . _TRISAbits 0 0 -> -> 0 `i `uc ]
 "92
-[; ;Interrupciones.c: 92:         } else if (Multiplex == 0) {
-[e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
+[; ;Interrupciones.c: 92:         }
+[e = . . _TRISAbits 0 1 -> -> 0 `i `uc ]
 "93
-[; ;Interrupciones.c: 93:             Multiplex = 1;
-[e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
+[; ;Interrupciones.c: 93:         INTCONbits.RBIF = 0;
+[e = . . _TRISAbits 0 2 -> -> 1 `i `uc ]
 "94
-[; ;Interrupciones.c: 94:         }
-[e = . . _IOCBbits 1 0 -> -> 1 `i `uc ]
+[; ;Interrupciones.c: 94:     }
+[e = . . _TRISAbits 0 3 -> -> 0 `i `uc ]
 "95
-[; ;Interrupciones.c: 95: 
-[e = . . _IOCBbits 1 1 -> -> 1 `i `uc ]
+[; ;Interrupciones.c: 95:     if (INTCONbits.T0IF == 1) {
+[e = _PORTD -> -> 0 `i `uc ]
 "96
-[; ;Interrupciones.c: 96:     }
-[e = . . _OPTION_REGbits 0 3 -> -> 0 `i `uc ]
+[; ;Interrupciones.c: 96:         ADC_finish = 1;
+[e = _PORTC -> -> 0 `i `uc ]
 "97
-[; ;Interrupciones.c: 97:     if (PIR1bits.ADIF == 1) {
-[e = . . _OPTION_REGbits 0 1 -> -> 0 `i `uc ]
+[; ;Interrupciones.c: 97:         INTCONbits.T0IF = 0;
+[e = . . _PORTAbits 0 0 -> -> 1 `i `uc ]
 "98
-[; ;Interrupciones.c: 98:         PIR1bits.ADIF = 0;
-[e = . . _OPTION_REGbits 0 1 -> -> 0 `i `uc ]
+[; ;Interrupciones.c: 98:         TMR0 = 245;
+[e = . . _PORTAbits 0 1 -> -> 0 `i `uc ]
 "99
-[; ;Interrupciones.c: 99:         ADC_value = ADRESH;
-[e = . . _OPTION_REGbits 1 2 -> -> 0 `i `uc ]
+[; ;Interrupciones.c: 99: 
+[e = . . _PORTAbits 0 3 -> -> 0 `i `uc ]
 "100
-[; ;Interrupciones.c: 100:         INTCONbits.T0IF = 0;
-[e = . . _OPTION_REGbits 1 1 -> -> 1 `i `uc ]
+[; ;Interrupciones.c: 100: 
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
 "101
-[; ;Interrupciones.c: 101:         TMR0 = 245;
-[e = . . _OPTION_REGbits 1 0 -> -> 0 `i `uc ]
+[; ;Interrupciones.c: 101: 
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
 "102
-[; ;Interrupciones.c: 102:     }
-[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+[; ;Interrupciones.c: 102:         if (Multiplex == 1) {
+[e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
 "103
-[; ;Interrupciones.c: 103: 
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+[; ;Interrupciones.c: 103:             Multiplex = 0;
+[e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
 "104
-[; ;Interrupciones.c: 104: }
-[e = _ADC_finish -> -> 0 `i `uc ]
+[; ;Interrupciones.c: 104:         } else if (Multiplex == 0) {
+[e = . . _IOCBbits 1 0 -> -> 1 `i `uc ]
 "105
-[e = _Multiplex -> -> 0 `i `uc ]
+[; ;Interrupciones.c: 105:             Multiplex = 1;
+[e = . . _IOCBbits 1 1 -> -> 1 `i `uc ]
 "106
-[e = _TMR0 -> -> 245 `i `uc ]
+[; ;Interrupciones.c: 106:         }
+[e = . . _OPTION_REGbits 0 3 -> -> 0 `i `uc ]
 "107
-[e :UE 146 ]
+[; ;Interrupciones.c: 107: 
+[e = . . _OPTION_REGbits 0 1 -> -> 0 `i `uc ]
+"108
+[; ;Interrupciones.c: 108:     }
+[e = . . _OPTION_REGbits 0 1 -> -> 0 `i `uc ]
+"109
+[; ;Interrupciones.c: 109:     if (PIR1bits.ADIF == 1) {
+[e = . . _OPTION_REGbits 1 2 -> -> 0 `i `uc ]
+"110
+[; ;Interrupciones.c: 110:         PIR1bits.ADIF = 0;
+[e = . . _OPTION_REGbits 1 1 -> -> 1 `i `uc ]
+"111
+[; ;Interrupciones.c: 111:         ADC_value = ADRESH;
+[e = . . _OPTION_REGbits 1 0 -> -> 0 `i `uc ]
+"112
+[; ;Interrupciones.c: 112:         INTCONbits.T0IF = 0;
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+"113
+[; ;Interrupciones.c: 113:         TMR0 = 245;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"114
+[; ;Interrupciones.c: 114:     }
+[e = _ADC_finish -> -> 0 `i `uc ]
+"115
+[; ;Interrupciones.c: 115: 
+[e = _Multiplex -> -> 0 `i `uc ]
+"116
+[; ;Interrupciones.c: 116: }
+[e = _TMR0 -> -> 245 `i `uc ]
+"117
+[e :UE 148 ]
 }
 [v $root$_oli `(v ~T0 @X0 0 e ]
-"109
+"119
 [v _oli `(v ~T1 @X0 1 ef ]
 {
 [e :U _oli ]
 [f ]
-"110
-[e $ ! == -> . . _INTCONbits 0 0 `i -> 1 `i 148  ]
-{
-"111
-[e $ ! == -> . . _PORTBbits 0 0 `i -> 1 `i 149  ]
-{
-"112
-[e ++ _PORTC -> -> 1 `i `Vuc ]
-"113
-}
-[e $U 150  ]
-[e :U 149 ]
-[e $ ! == -> . . _PORTBbits 0 1 `i -> 1 `i 151  ]
-{
-"114
-[e -- _PORTC -> -> 1 `i `Vuc ]
-"115
-}
-[e :U 151 ]
-[e :U 150 ]
-"116
-[e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
-"117
-}
-[e :U 148 ]
-"118
-[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 152  ]
-{
-"119
-[e = _ADC_finish -> -> 1 `i `uc ]
 "120
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+[e $ ! == -> . . _INTCONbits 0 0 `i -> 1 `i 150  ]
+{
 "121
-[e = _TMR0 -> -> 245 `i `uc ]
+[e $ ! == -> . . _PORTBbits 0 0 `i -> 1 `i 151  ]
+{
 "122
-[e $ ! == -> _Multiplex `i -> 1 `i 153  ]
-{
+[e ++ _PORTC -> -> 1 `i `Vuc ]
 "123
-[e = _Multiplex -> -> 0 `i `uc ]
+}
+[e $U 152  ]
+[e :U 151 ]
+[e $ ! == -> . . _PORTBbits 0 1 `i -> 1 `i 153  ]
+{
 "124
-}
-[e $U 154  ]
-[e :U 153 ]
-[e $ ! == -> _Multiplex `i -> 0 `i 155  ]
-{
+[e -- _PORTC -> -> 1 `i `Vuc ]
 "125
-[e = _Multiplex -> -> 1 `i `uc ]
-"126
 }
-[e :U 155 ]
-[e :U 154 ]
-"128
-}
+[e :U 153 ]
 [e :U 152 ]
-"129
-[e $ ! == -> . . _PIR1bits 0 6 `i -> 1 `i 156  ]
-{
-"130
-[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
-"131
-[e = _ADC_value _ADRESH ]
-"132
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"133
-[e = _TMR0 -> -> 245 `i `uc ]
-"134
+"126
+[e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
+"127
 }
-[e :U 156 ]
+[e :U 150 ]
+"128
+[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 154  ]
+{
+"129
+[e = _ADC_finish -> -> 1 `i `uc ]
+"130
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"131
+[e = _TMR0 -> -> 245 `i `uc ]
+"135
+[e $ ! == -> _Multiplex `i -> 1 `i 155  ]
+{
 "136
-[e :UE 147 ]
+[e = _Multiplex -> -> 0 `i `uc ]
+"137
+}
+[e $U 156  ]
+[e :U 155 ]
+[e $ ! == -> _Multiplex `i -> 0 `i 157  ]
+{
+"138
+[e = _Multiplex -> -> 1 `i `uc ]
+"139
+}
+[e :U 157 ]
+[e :U 156 ]
+"141
+}
+[e :U 154 ]
+"142
+[e $ ! == -> . . _PIR1bits 0 6 `i -> 1 `i 158  ]
+{
+"143
+[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+"144
+[e = _ADC_value _ADRESH ]
+"145
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"146
+[e = _TMR0 -> -> 245 `i `uc ]
+"147
+}
+[e :U 158 ]
+"149
+[e :UE 149 ]
 }
